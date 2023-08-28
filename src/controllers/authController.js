@@ -1,18 +1,43 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const { generateAccessToken } = require('../libs/jwtUtils');
+
+
+// Simulación de base de datos en memoria
+const usersInMemory = [];
+
 const authController = {
-    login: async (req, res) => {
+    registerUser: async (req, res) => {
         try {
-            res.json({ message: 'Usuario inicio sesion' });
+            const { username, email, password } = req.body;
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const newUser = {
+                id: usersInMemory.length + 1,
+                username,
+                email,
+                password: hashedPassword,
+            }
+            usersInMemory.push(newUser);
         } catch (error) {
-            console.log("Error en getAllUsers:", error);
-            res.status(500).json({ message: 'Error al iniciar sesion' });
+            res.status(500).json({ error: 'Error al registrar el usuario.' });
         }
     },
-    register: async (req, res) => {
+    loginUser: async (req, res) => {
         try {
-            res.json({ message: 'Usuario registrado' });
+            let { email, password } = req.body
+            const user = usersInMemory.find((user) => user.email === email);
+            console.log(user)
+            if (!user) {
+                return res.status(401).json({ error: 'Credenciales inválidas.' });
+            }
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+            if (!isPasswordValid) {
+                return res.status(401).json({ error: 'Credenciales inválidas.' });
+            }
+            const token = generateAccessToken(user);
+            res.json({ token });
         } catch (error) {
-            console.log("Error en getAllUsers:", error);
-            res.status(500).json({ message: 'Error al registrar usuario' });
+            res.status(401).send('Credenciales inválidas.');
         }
     },
     // Otros métodos de controlador
