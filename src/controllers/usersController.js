@@ -4,7 +4,6 @@ const usersController = {
     getAllUsers: async (req, res) => {
         try {
             const users = await userModel.getAllUsers();
-            console.log("corneta")
             res.json(users); // Enviar la respuesta con los usuarios obtenidos
         } catch (error) {
             console.log("Error en getAllUsers:", error);

@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000;
 
 app.set('pkg', pkg);
 app.use(morgan('dev'));
+app.use(express.json());
 
 // Importa y monta el enrutador principal
 const mainRouter = require('./routes/index');
