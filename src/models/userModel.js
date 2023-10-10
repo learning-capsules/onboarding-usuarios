@@ -35,6 +35,19 @@ const userModel = {
             console.error('Error creating user:', error);
             throw error;
         }
+    },
+    getUserByEmail: async (email) => {
+        const query = 'SELECT * FROM usuarios WHERE correo = $1';
+        const values = [email];
+
+        try {
+            const result = await pool.query(query, values);
+            console.log(result.rows); // Agrega este log para ver los resultados de la consulta
+            return result.rows[0];
+        } catch (error) {
+            console.error('Error al obtener usuario por correo:', error);
+            throw error;
+        }
     }
 };
 

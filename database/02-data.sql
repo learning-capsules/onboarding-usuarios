@@ -3,8 +3,9 @@ INSERT INTO tipo_aprendizaje (tipo_aprendizaje)
 VALUES 
 ('visual'), 
 ('auditivo'), 
-('orientado a problemas'), 
-('kinesico');
+('readwrite'), 
+('kinesico'),
+('multimodal');
 
 INSERT INTO usuarios (nombre, apellido, edad, correo, password, id_tipo_aprendizaje) 
 VALUES 

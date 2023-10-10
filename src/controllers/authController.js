@@ -9,14 +9,23 @@ const authController = {
     registerUser: async (req, res) => {
         try {
             const { nombre, apellido, edad, correo, password, id_tipo_aprendizaje } = req.body;
-            const hashedPassword = await bcrypt.hash(password, 10);
-            const response = await userModel.createUser(nombre, apellido, edad, correo, hashedPassword, id_tipo_aprendizaje)
-            console.log(response)
-            res.status(200).json({ mensaje: "Usuario registrado correctamente" })
-        } catch (error) {
-            console.log(error)
-            res.status(500).json({ error: 'Error al registrar el usuario.' });
 
+            // Verificar si el correo ya existe en la base de datos
+            const existingUser = await userModel.getUserByEmail(correo);
+
+            if (existingUser) {
+                // Si el usuario ya existe, enviar un mensaje de error
+                return res.status(409).json({ error: 'El correo electrónico ya está registrado.' });
+            }
+
+            // Si el correo no existe, continuar con el registro del usuario
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const response = await userModel.createUser(nombre, apellido, edad, correo, hashedPassword, id_tipo_aprendizaje);
+            console.log(response);
+            res.status(200).json({ mensaje: 'Usuario registrado correctamente' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Error al registrar el usuario.' });
         }
     },
     loginUser: async (req, res) => {
