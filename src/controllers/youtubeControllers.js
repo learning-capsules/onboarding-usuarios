@@ -4,13 +4,14 @@ const youtube = require('../models/youtube');
 
 const youtubeController = {
     getPlaylistVideos: async (req, res) => {
+        console.log("hola")
         const ID_playlist = req.params.id
         console.log(typeof ID_playlist)
         try {
             youtube.playlistItems.list({
                 part: 'snippet',
                 maxResults: 50, // Puedes ajustar el número de resultados si es necesario
-                playlistId: 'PLSjB_MuAP1X_Rw6kaecFxSsZmV9HZdFbj',
+                playlistId: ID_playlist,
                 // playlistId: ID_playlist,
             }, (err, response) => {
                 if (err) {
