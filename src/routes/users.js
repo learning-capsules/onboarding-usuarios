@@ -11,4 +11,13 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id',async (req, res) => {
+    try {
+        await usersController.getUserInfo(req, res);
+    } catch (error) {
+        console.log("Error en la ruta /asdfasdfasdfasd:", error);
+        res.status(500).json({ message: 'Error en la ruta /users' });
+    }
+});
+
 module.exports = router;

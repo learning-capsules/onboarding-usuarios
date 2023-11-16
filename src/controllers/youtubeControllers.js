@@ -10,7 +10,8 @@ const youtubeController = {
             youtube.playlistItems.list({
                 part: 'snippet',
                 maxResults: 50, // Puedes ajustar el número de resultados si es necesario
-                playlistId: ID_playlist,
+                playlistId: 'PLSjB_MuAP1X_Rw6kaecFxSsZmV9HZdFbj',
+                // playlistId: ID_playlist,
             }, (err, response) => {
                 if (err) {
                     console.error('Error al obtener la lista de reproducción:', err);

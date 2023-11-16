@@ -15,11 +15,12 @@ app.use(cors());
 const mainRouter = require('./routes/index');
 const users = require('./routes/users');
 const authRoutes = require('./routes/authRoutes');
+const videos = require('./routes/videos')
 
 app.use('/', mainRouter);
 app.use('/users', users);
 app.use('/auth', authRoutes);
-app.use('/videos', authRoutes)
+app.use('/videos', videos);
 
 app.listen(port, () => {
     console.log("Server listening on", port);

@@ -1,16 +1,16 @@
 version: "3"
 
 services:
-  learning-capsules-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - .:/app/
-      - /app/node_modules
-    ports:
-      - "3000:3000"
-    command: npm start
+  # learning-capsules-api:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - .:/app/
+  #     - /app/node_modules
+  #   ports:
+  #     - "3000:3000"
+  #   command: npm start
   learning-capsules-db:
     image: postgres:15
     restart: always

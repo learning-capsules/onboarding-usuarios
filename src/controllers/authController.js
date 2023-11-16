@@ -39,8 +39,10 @@ const authController = {
             if (!isPasswordValid) {
                 return res.status(401).json({ error: 'Credenciales inválidas.' });
             }
+            console.log("usuario", user)
             const token = generateAccessToken(user);
-            res.json({ token });
+            const learningTypeId = user.id_tipo_aprendizaje;
+            res.json({ token,  learningTypeId});
         } catch (error) {
             res.status(401).send('Credenciales inválidas.');
         }
