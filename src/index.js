@@ -19,6 +19,7 @@ const authRoutes = require('./routes/authRoutes');
 app.use('/', mainRouter);
 app.use('/users', users);
 app.use('/auth', authRoutes);
+app.use('/videos', authRoutes)
 
 app.listen(port, () => {
     console.log("Server listening on", port);
