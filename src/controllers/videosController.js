@@ -2,7 +2,6 @@ const videoModel = require('../models/videoModel');
 
 const videosController = {
     getPlaylistIdyLearningType: async (req, res) => {
-        console.log("llego")
         try {
             const learningTypeId  = req.params.learningTypeId;
             const url = await videoModel.getPlaylistIdyLearningType(learningTypeId);

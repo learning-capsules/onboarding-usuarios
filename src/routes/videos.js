@@ -4,7 +4,6 @@ const youtubeController = require('../controllers/youtubeControllers')
 const videosController = require('../controllers/videosController');
 const authMiddleware = require('../middlewares/authMiddleware');
 router.get('/playlist/:id', youtubeController.getPlaylistVideos);
-router.get('/playlist/:id', youtubeController.getPlaylistVideos);
 router.get('/url/:learningTypeId', videosController.getPlaylistIdyLearningType)
 
 // Rutas protegidas
