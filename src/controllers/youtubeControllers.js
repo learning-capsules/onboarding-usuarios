@@ -4,7 +4,11 @@ const youtube = require('../models/youtube');
 
 const youtubeController = {
     getPlaylistVideos: async (req, res) => {
+<<<<<<< HEAD
         console.log("youtube controller")
+=======
+        console.log("hola")
+>>>>>>> 35e1d7be44b3297af0fa42d6b6f6224054b95ddf
         const ID_playlist = req.params.id
         console.log(typeof ID_playlist)
         console.log("ID PLAY EN CONTROLLER", ID_playlist)
@@ -13,6 +17,10 @@ const youtubeController = {
                 part: 'snippet',
                 maxResults: 50, // Puedes ajustar el número de resultados si es necesario
                 playlistId: ID_playlist,
+<<<<<<< HEAD
+=======
+                // playlistId: ID_playlist,
+>>>>>>> 35e1d7be44b3297af0fa42d6b6f6224054b95ddf
             }, (err, response) => {
                 if (err) {
                     console.error('Error al obtener la lista de reproducción:', err);
