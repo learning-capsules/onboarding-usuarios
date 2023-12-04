@@ -1,14 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const youtubeController = require('../controllers/youtubeControllers')
-const videosController = require('../controllers/videosController');
-const authMiddleware = require('../middlewares/authMiddleware');
-router.get('/playlist/:id', youtubeController.getPlaylistVideos);
-router.get('/url/:learningTypeId', videosController.getPlaylistIdyLearningType)
+const youtubeController = require("../controllers/youtubeControllers");
+const videosController = require("../controllers/videosController");
+const authMiddleware = require("../middlewares/authMiddleware");
+
+router.get("/playlist/:id", youtubeController.getPlaylistVideos);
+router.get("/url/:learningTypeId", videosController.getPlaylistIdyLearningType);
+router.get("/:id", youtubeController.getVideoInfo);
 
 // Rutas protegidas
-router.get('/protected', authMiddleware.verifyToken, (req, res) => {
-    res.send('Ruta protegida');
+router.get("/protected", authMiddleware.verifyToken, (req, res) => {
+  res.send("Ruta protegida");
 });
 
 module.exports = router;

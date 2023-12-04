@@ -36,5 +36,34 @@ const youtubeController = {
       res.status(500).json({ error: "Error al encontrar lista." });
     }
   },
+  getVideoInfo: async (req, res) => {
+    const videoId = req.params.id;
+    try {
+      youtube.videos.list(
+        {
+          part: "snippet",
+          id: videoId,
+        },
+        (err, response) => {
+          if (err) {
+            console.error("Error fetching video info:", err);
+            return res.status(500).json({ error: "Error fetching video info" });
+          }
+
+          // Assuming only one video is being fetched
+          const videoData = response.data.items[0].snippet;
+          const videoInfo = {
+            title: videoData.title,
+            description: videoData.description,
+          };
+
+          res.status(200).json(videoInfo);
+        }
+      );
+    } catch (error) {
+      console.error("Server error:", error);
+      res.status(500).json({ error: "Server error" });
+    }
+  },
 };
 module.exports = youtubeController;

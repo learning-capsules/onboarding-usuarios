@@ -18,12 +18,12 @@ VALUES
 
 INSERT INTO videos (nombre, url, id_tipo_aprendizaje) 
 VALUES 
-('Space', 'PLtmEbU5mNGcE4_qQEsI3QRRnZHggPddoA&si=SG2BY0KBLuNgWgkB', 2); 
+('Space', 'PLtmEbU5mNGcE4_qQEsI3QRRnZHggPddoA', 2); 
 
 
 INSERT INTO videos (nombre, url, id_tipo_aprendizaje) 
 VALUES 
-('Megadeth', 'RDEMTnM9O32IlHyJHdrPmZ0o0A&start_radio=1', 3); 
+('Megadeth', 'PLTrBj5edGdF92qJXQ0FzYETBRX4_Uz2ZJ', 3); 
 
 
 INSERT INTO videos (nombre, url, id_tipo_aprendizaje) 
