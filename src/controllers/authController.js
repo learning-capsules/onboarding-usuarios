@@ -42,7 +42,7 @@ const authController = {
             console.log("usuario", user)
             const token = generateAccessToken(user);
             const learningTypeId = user.id_tipo_aprendizaje;
-            res.json({ token,  learningTypeId});
+            res.json({ token, learningTypeId });
         } catch (error) {
             res.status(401).send('Credenciales inválidas.');
         }
