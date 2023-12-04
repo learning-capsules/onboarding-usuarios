@@ -15,12 +15,14 @@ const commentsController = {
   createComment: async (req, res) => {
     try {
       console.log("bdy", req.body);
-      const { commentText, videoId, userId } = req.body;
+      const { commentText, videoId, userId, userName, userLastName } = req.body;
 
       const comments = await commentModel.createComment(
         commentText,
         videoId,
-        userId
+        userId,
+        userName,
+        userLastName
       );
       res.json(comments); // Enviar la respuesta con los usuarios obtenidos
     } catch (error) {

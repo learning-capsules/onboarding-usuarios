@@ -8,17 +8,18 @@ const commentModel = {
 
     try {
       const result = await pool.query(query, values);
+      console.log(result.rows)
       return result.rows;
     } catch (error) {
       console.error("Error getting comments:", error);
       throw error;
     }
   },
-  async createComment(comment, youtubeVideoId, userId) {
+  async createComment(comment, youtubeVideoId, userId, userName, userLastName) {
     console.log("COMMENT ", comment);
     const query =
-      "INSERT INTO comments (comment, id_youtube_video, id_usuario) VALUES ($1, $2, $3)";
-    const values = [comment, youtubeVideoId, userId];
+      "INSERT INTO comments (comment, id_youtube_video, id_usuario, username, lastname) VALUES ($1, $2, $3, $4, $5)";
+    const values = [comment, youtubeVideoId, userId, userName, userLastName];
 
     try {
       const result = await pool.query(query, values);

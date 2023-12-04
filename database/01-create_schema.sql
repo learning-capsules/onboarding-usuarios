@@ -24,5 +24,7 @@ CREATE TABLE comments (
     id_comentario SERIAL PRIMARY KEY,
     comment VARCHAR(255),
     id_youtube_video varchar(255),
-    id_usuario INT REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+    id_usuario INT REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    username varchar(255),
+    lastname varchar(255)
 )
