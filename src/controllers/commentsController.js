@@ -4,9 +4,8 @@ const commentsController = {
   getCommentByYoutubeVideoId: async (req, res) => {
     try {
       const videoId = req.params.youtubeVideoId;
-      console.log("VID", videoId);
+
       const comments = await commentModel.getCommentsByYoutubeVideoId(videoId);
-      console.log("COMMENTS", comments);
       res.json(comments); // Enviar la respuesta con los usuarios obtenidos
     } catch (error) {
       console.log("Error en getCommentByYoutubeVideoId:", error);
